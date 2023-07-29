@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Dad's Tutoring</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Noto Sans', sans-serif;
+            color: #333;
+            background: #f0f0f0;
+        }
+
+        nav {
+            background: #333;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 20px;
+            margin: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        nav ul li {
+            display: inline-block;
+            position: relative;
+        }
+
+        nav ul li a {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #f0f0f0;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #FF6347;
+        }
+
+        nav ul li ul.dropdown-menu {
+            position: absolute;
+            display: none;
+            list-style-type: none;
+            padding: 0;
+            background-color: #f0f0f0;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            width: 200px;
+        }
+
+        nav ul li ul.dropdown-menu li {
+            display: block;
+        }
+
+        nav ul li ul.dropdown-menu li a {
+            padding: 10px 20px;
+            display: block;
+            width: 100%;
+            text-align: left;
+            color: #333;
+            transition: background 0.3s ease;
+        }
+
+        nav ul li ul.dropdown-menu li a:hover {
+            background: #FF6347;
+            color: #f0f0f0;
+        }
+
+        nav ul li:hover ul.dropdown-menu {
+            display: block;
+        }
+
+        .parallax {
+            /* Use a background image and set up the parallax effect */
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            /* Set a default height */
+            height: 100vh;
+            /* Add some padding for your content */
+            padding: 50px;
+        }
+
+        #home {
+            background-image: url('home.jpg');
+        }
+
+        #about-us {
+            background-image: url('about-us.jpg');
+        }
+
+        #services {
+            background-image: url('services.jpg');
+        }
+
+        #contact-us {
+            background-image: url('contact-us.jpg');
+        }
+
+        #join-as-tutor {
+            background-image: url('join-as-tutor.jpg');
+        }
+
+        #our-tutors {
+            background-image: url('our-tutors.jpg');
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about-us">About Us</a></li>
+            <li>
+                <a href="#services">Services</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#entrance-tests">Entrance Tests</a></li>
+                    <li><a href="#sciences">Sciences</a></li>
+                    <li><a href="#humanities">Humanities</a></li>
+                    <li><a href="#mathematics">Mathematics</a></li>
+                </ul>
+            </li>
+            <li><a href="#contact-us">Contact Us</a></li>
+            <li><a href="#join-as-tutor">Join as a Tutor</a></li>
+            <li><a href="#our-tutors">Our Tutors</a></li>
+        </ul>
+    </nav>
+
+    <header id="home" class="parallax">
+        <!-- Add your home content here -->
+    </header>
+
+    <section id="about-us" class="parallax">
+        <!-- Add your about us content here -->
+    </section>
+
+    <section id="services" class="parallax">
+        <!-- Add your services content here -->
+    </section>
+
+    <section id="contact-us" class="parallax">
+        <!-- Add your contact us content here -->
+    </section>
+
+    <section id="join-as-tutor" class="parallax">
+        <!-- Add your join as a tutor content here -->
+    </section>
+
+    <section id="our-tutors" class="parallax">
+        <!-- Add your our tutors content here -->
+    </section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('a').on('click', function(event) {
+                if (this.hash !== "") {
+                    event.preventDefault();
+
+                    var hash = this.hash;
+
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 800, function(){
+                        window.location.hash = hash;
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
