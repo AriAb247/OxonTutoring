@@ -12,10 +12,11 @@
         }
 
         nav {
-            background: #333;
+            background: #fff;
             position: fixed;
             width: 100%;
             z-index: 1000;
+            box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
         }
 
         nav ul {
@@ -35,7 +36,7 @@
             display: inline-block;
             padding: 10px 20px;
             text-decoration: none;
-            color: #f0f0f0;
+            color: #333;
             transition: color 0.3s ease;
         }
 
@@ -76,15 +77,11 @@
         }
 
         .parallax {
-            /* Use a background image and set up the parallax effect */
             background-attachment: fixed;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
-
-            /* Set a default height */
             height: 100vh;
-            /* Add some padding for your content */
             padding: 50px;
         }
 
@@ -111,6 +108,55 @@
         #our-tutors {
             background-image: url('our-tutors.jpg');
         }
+
+        /* Additional CSS for image slider */
+        .slider {
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .slider img {
+            width: 100%;
+            height: auto;
+            display: none;
+        }
+
+        .slider img.active {
+            display: block;
+        }
+
+        /* Additional CSS for contact form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            padding: 10px 20px;
+            background: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* For responsiveness */
+        @media screen and (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+            }
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -135,8 +181,18 @@
     </nav>
 
     <header id="home" class="parallax">
-        <!-- Add your home content here -->
+        <div class="header-content">
+            <h1>Welcome to Your Dad's Tutoring</h1>
+            <p>Your success is our mission</p>
+        </div>
     </header>
+
+    <!-- Image Slider -->
+    <section class="slider">
+        <img src="image1.jpg" class="active">
+        <img src="image2.jpg">
+        <img src="image3.jpg">
+    </section>
 
     <section id="about-us" class="parallax">
         <!-- Add your about us content here -->
@@ -146,8 +202,14 @@
         <!-- Add your services content here -->
     </section>
 
+    <!-- Contact Form -->
     <section id="contact-us" class="parallax">
-        <!-- Add your contact us content here -->
+        <div class="contact-form">
+            <input type="text" placeholder="Name" required>
+            <input type="email" placeholder="Email" required>
+            <textarea placeholder="Message" required></textarea>
+            <button type="submit">Submit</button>
+        </div>
     </section>
 
     <section id="join-as-tutor" class="parallax">
@@ -174,6 +236,22 @@
                     });
                 }
             });
+
+            // Additional JavaScript for image slider
+            var currentImage = $('.slider img.active');
+            var images = $('.slider img');
+            var imgIndex = 1;
+
+            setInterval(function() {
+                currentImage.removeClass('active');
+                currentImage = $(images[imgIndex]);
+                currentImage.addClass('active');
+
+                imgIndex++;
+                if (imgIndex == images.length) {
+                    imgIndex = 0;
+                }
+            }, 3000);
         });
     </script>
 </body>
