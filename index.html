@@ -168,7 +168,7 @@
         <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#about-us">About Us</a></li>
-            <li><a href="#services" id="services-btn">Services</a></li>
+            <li><a href="#services" id="services-btn">Services <span id="arrow">⬇️</span></a></li>
             <li><a href="#contact-us">Contact Us</a></li>
             <li><a href="#join-as-tutor">Join as a Tutor</a></li>
             <li><a href="#our-tutors">Our Tutors</a></li>
@@ -268,20 +268,26 @@
         // Get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[0];
 
+        // Get the arrow
+        var arrow = document.getElementById("arrow");
+
         // When the user hovers over the button, open the modal 
         btn.onmouseover = function() {
             modal.style.display = "block";
+            arrow.textContent = "❌";
         }
 
         // When the user clicks on <span> (x), close the modal
         span.onclick = function() {
             modal.style.display = "none";
+            arrow.textContent = "⬇️";
         }
 
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
+                arrow.textContent = "⬇️";
             }
         }
     </script>
