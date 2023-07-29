@@ -44,38 +44,6 @@
             color: #FF6347;
         }
 
-        nav ul li ul.dropdown-menu {
-            position: absolute;
-            display: none;
-            list-style-type: none;
-            padding: 0;
-            background-color: #f0f0f0;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            width: 200px;
-        }
-
-        nav ul li ul.dropdown-menu li {
-            display: block;
-        }
-
-        nav ul li ul.dropdown-menu li a {
-            padding: 10px 20px;
-            display: block;
-            width: 100%;
-            text-align: left;
-            color: #333;
-            transition: background 0.3s ease;
-        }
-
-        nav ul li ul.dropdown-menu li a:hover {
-            background: #FF6347;
-            color: #f0f0f0;
-        }
-
-        nav ul li:hover ul.dropdown-menu {
-            display: block;
-        }
-
         .parallax {
             background-attachment: fixed;
             background-position: center;
@@ -151,6 +119,41 @@
             cursor: pointer;
         }
 
+        /* Additional CSS for modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #f0f0f0;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
         /* For responsiveness */
         @media screen and (max-width: 768px) {
             nav ul {
@@ -165,20 +168,26 @@
         <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#about-us">About Us</a></li>
-            <li>
-                <a href="#services">Services</a>
-                <ul class="dropdown-menu">
-                    <li><a href="#entrance-tests">Entrance Tests</a></li>
-                    <li><a href="#sciences">Sciences</a></li>
-                    <li><a href="#humanities">Humanities</a></li>
-                    <li><a href="#mathematics">Mathematics</a></li>
-                </ul>
-            </li>
+            <li><a href="#services" id="services-btn">Services</a></li>
             <li><a href="#contact-us">Contact Us</a></li>
             <li><a href="#join-as-tutor">Join as a Tutor</a></li>
             <li><a href="#our-tutors">Our Tutors</a></li>
         </ul>
     </nav>
+
+    <!-- The Modal -->
+    <div id="services-modal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <ul>
+                <li><a href="#entrance-tests">Entrance Tests</a></li>
+                <li><a href="#sciences">Sciences</a></li>
+                <li><a href="#humanities">Humanities</a></li>
+                <li><a href="#mathematics">Mathematics</a></li>
+            </ul>
+        </div>
+    </div>
 
     <header id="home" class="parallax">
         <div class="header-content">
@@ -196,10 +205,6 @@
 
     <section id="about-us" class="parallax">
         <!-- Add your about us content here -->
-    </section>
-
-    <section id="services" class="parallax">
-        <!-- Add your services content here -->
     </section>
 
     <!-- Contact Form -->
@@ -253,6 +258,32 @@
                 }
             }, 3000);
         });
+
+        // Get the modal
+        var modal = document.getElementById("services-modal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("services-btn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user hovers over the button, open the modal 
+        btn.onmouseover = function() {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
     </script>
 </body>
 </html>
