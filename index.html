@@ -11,38 +11,41 @@
             background: #f0f0f0;
         }
 
-        nav {
-            background: #fff;
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
-        }
+       nav {
+    background: #333; /* Dark Background */
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+}
 
-        nav ul {
-            list-style-type: none;
-            padding: 20px;
-            margin: 0;
-            display: flex;
-            justify-content: space-around;
-        }
+nav ul {
+    list-style-type: none;
+    padding: 20px;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
 
-        nav ul li {
-            display: inline-block;
-            position: relative;
-        }
+nav ul li {
+    display: inline-block;
+    position: relative;
+}
 
-        nav ul li a {
-            display: inline-block;
-            padding: 10px 20px;
-            text-decoration: none;
-            color: #333;
-            transition: color 0.3s ease;
-        }
+nav ul li a {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #f0f0f0; /* Light Text */
+    transition: background 0.3s ease, color 0.3s ease;
+    border-radius: 5px; /* Rounded Corners */
+}
 
-        nav ul li a:hover {
-            color: #FF6347;
-        }
+nav ul li a:hover {
+    background: #FF6347; /* Accent Color on Hover */
+    color: #f0f0f0; /* Light Text on Hover */
+}
+
 
         .parallax {
             background-attachment: fixed;
