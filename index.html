@@ -254,29 +254,39 @@
             }, 3000);
         });
 
-        // Get the modal
-        var modal = document.getElementById("services-modal");
+       // Get the modal
+    var modal = document.getElementById("services-modal");
 
-        // Get the button that opens the modal
-        var btn = document.getElementById("services-btn");
+    // Get the button that opens the modal
+    var btn = document.getElementById("services-btn");
 
-        // When the user hovers over the button, open the modal 
-        btn.onmouseover = function() {
-            modal.style.display = "block";
-        }
+    // Hide modal timeout
+    var hideModalTimeout;
 
-        // When the user moves the cursor away from the button or the modal, close the modal
-        btn.onmouseout = function(event) {
-            if (!event.relatedTarget || event.relatedTarget.nodeName !== "DIV") {
-                modal.style.display = "none";
-            }
-        }
+    // When the user hovers over the button, open the modal 
+    btn.onmouseover = function() {
+        clearTimeout(hideModalTimeout);
+        modal.style.display = "block";
+    }
 
-        modal.onmouseout = function(event) {
-            if (!event.relatedTarget || event.relatedTarget.nodeName !== "A") {
-                modal.style.display = "none";
-            }
-        }
-    </script>
+    // When the user moves the cursor away from the button, close the modal
+    btn.onmouseout = function(event) {
+        hideModalTimeout = setTimeout(function() {
+            modal.style.display = "none";
+        }, 500); // 500ms delay before hiding the modal
+    }
+
+    // When the user moves the cursor into the modal, cancel the hide modal timeout
+    modal.onmouseover = function(event) {
+        clearTimeout(hideModalTimeout);
+    }
+
+    // When the user moves the cursor away from the modal, close the modal
+    modal.onmouseout = function(event) {
+        hideModalTimeout = setTimeout(function() {
+            modal.style.display = "none";
+        }, 500); // 500ms delay before hiding the modal
+    }
+</script>
 </body>
 </html>
